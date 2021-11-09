@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { NavLink, Route } from 'react-router-dom';
 import Cart from './Cart';
 import styles from './shopping.module.css'
@@ -69,6 +69,22 @@ export const Catalog = ({ goods, addCart }) => {
 }
 
 const Shopping = (props) => {
+    useEffect(() => {
+        props.db.collection('shop')
+            .get()
+            .then(snapshot => {
+                const data = snapshot.docs.map(doc => ({
+                    id: doc.id,
+                    ...doc.data()
+                }))
+                props.getGoods(data)
+            })
+            .catch(e => {
+                console.error(e)
+            })
+    }, [])
+
+
     return (
         <div className={styles.shoppingList} >
             <div className={styles.navigationShop}>

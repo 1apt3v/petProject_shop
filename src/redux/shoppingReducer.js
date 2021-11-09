@@ -2,24 +2,13 @@ const BUY_GOODS = 'BUY_GOODS'
 const DELETE_GOODS = 'DELETE_GOODS'
 const INCREMENT_ITEM_IN_CART = 'INCREMENT_ITEM_IN_CART'
 const DECREMENT_ITEM_IN_CART = 'DECREMENT_ITEM_IN_CART'
+const GET_GOODS = 'GET_GOODS'
+
 
 const localCart = JSON.parse(localStorage.getItem('cart'))
 
 const initialState = {
-    goods: [
-        {
-            id: 1,
-            name: 'iPhone',
-            price: 999,
-            img: 'https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/iphone-13-family-select-2021?wid=940&hei=1112&fmt=jpeg&qlt=80&.v=1629842667000'
-        },
-        {
-            id: 2,
-            name: 'iPhone 12',
-            price: 1299,
-            img: 'https://cdn.svyaznoy.ru/upload/iblock/2c3/ruru_iphone12promax_q121_pacificblue_pdp-image-1b.jpg/resize/483x483/hq/'
-        }
-    ],
+    goods: [],
     cart: localCart ? localCart : []
 }
 
@@ -75,6 +64,13 @@ const shoppingReducer = (state = initialState, action) => {
                 }
             }
         }
+        case GET_GOODS: {
+            const arr = [...action.payload].sort((a, b) => a.id > b.id ? 1 : -1)
+            return {
+                ...state,
+                goods: [...arr]
+            }
+        }
         default:
             return state
     }
@@ -84,6 +80,7 @@ const addCartAC = (id) => ({ type: BUY_GOODS, payload: id })
 const deleteCartAC = (id) => ({ type: DELETE_GOODS, payload: id })
 const incrementItemInCartAC = (id) => ({ type: INCREMENT_ITEM_IN_CART, payload: id })
 const decrementItemInCartAC = (id) => ({ type: DECREMENT_ITEM_IN_CART, payload: id })
+const getGoodsAC = (data) => ({ type: GET_GOODS, payload: data })
 
 export const addCart = (id) => {
     return (dispatch) => {
@@ -106,6 +103,12 @@ export const incrementItemInCart = (id) => {
 export const decrementItemInCart = (id) => {
     return (dispatch) => {
         dispatch(decrementItemInCartAC(id))
+    }
+}
+
+export const getGoods = (data) => {
+    return (dispatch) => {
+        dispatch(getGoodsAC(data))
     }
 }
 
