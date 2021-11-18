@@ -9,7 +9,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 30px;
+    padding: 30px 0;
 }
 
 .navCatalog {
@@ -49,10 +49,13 @@
 
 .goodsTitle {
     display: flex;
+    height: 100%;
 }
 
 .goodsItem {
-    width: 100%;
+    /* max-width: 1200px;
+    min-width: 800px; */
+    width: 900px;
     height: 200px;
     background-color: white;
     display: flex;
@@ -60,20 +63,58 @@
     justify-content: space-between;
     margin: 15px 0;
     border-radius: 15px;
-    padding: 0 50px;
+    padding: 30px 50px;
     box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.2);
 }
 
-.imgGoods {
-    max-height: 150px;
-    width: 120px;
+.imgGoodsSmall {
+    max-height: 140px;
+    width: 100px;
     cursor: pointer;
+    opacity: 0;
+    /* object-fit: cover; */
+    transition: opacity .3s ease-in-out;
+}
+
+.imgGoods {
+    max-height: 700px;
+    max-width: 1000px;
+    cursor: pointer;
+    opacity: 0;
+    /* object-fit: cover; */
+    transition: opacity .3s ease-in-out;
+}
+
+.imgGoodsLoaded {
+    opacity: 1;
 }
 
 .nameGoods {
     margin-left: 20px;
     font-size: 18px;
     cursor: pointer;
+}
+
+.filterMenu {
+    width: 100%;
+    height: 300px;
+    border-radius: 15px;
+    background-color: white;
+    margin-top: 15px;
+    margin-right: 15px;
+    box-shadow: 0px 2px 3px rgb(0 0 0 / 20%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.inputFinder {
+    width: 500px;
+    height: 30px;
+    margin-left: 30px;
+    padding: 5px;
+    border-radius: 5px;
+    border: none;
 }
 
 .onCartButton {

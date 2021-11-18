@@ -1,0 +1,58 @@
+.test {
+    box-sizing: border-box;
+    height: 100vh;
+    width: 100vw;
+}
+
+
+.root__menu {
+    z-index: 1000;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+    border-radius: 5px;
+    background-color: white;
+}
+
+.menu {
+    margin-bottom: 20px;
+    display: flex;
+    width: 200px;
+    height: 50px;
+    border: 1px solid black;
+    border-radius: 5px;
+    background-color: orange;
+    position: relative;
+}
+
+.menu__name {
+    padding: 5px;
+}
+
+.menu__submenu {
+    padding: 20px;
+    width: 300px;
+    min-height: 50px;
+    position: absolute;
+    left: 200px;
+    border: 1px solid black;
+    border-radius: 5px;
+    background-color: orangered;
+}
+
+.menu__submenu a {
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.menu__submenu a:hover {
+    color: rgb(238, 238, 238);
+}
+
+
+.displayComponent {
+    position: absolute;
+    left: 500px;
+}

@@ -1,11 +1,12 @@
 import './App.css';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import Shopping from './components/shopping/Shopping';
 import { addCart, decrementItemInCart, deleteCart, incrementItemInCart, getGoods } from './redux/shoppingReducer';
 import { NavLink, Route, Switch } from 'react-router-dom';
 import { Redirect } from 'react-router'
 import db from './firebase/indexFirebase'
+import Test from './components/Test/Test';
 
 
 
@@ -25,10 +26,14 @@ const App = (props) => {
                     getGoods={props.getGoods}
                     db={db} />
             </Route>
+            <Route path="/test">
+                <Test testReducer={props.testReducer} />
+            </Route>
 
-            <Route path='/' render={() => (
+            <Route exact path='/' render={() => (
                 <div>
                     <NavLink to='/shop'>Магазин</NavLink>
+                    <NavLink to='/test'>Тестирование</NavLink>
                 </div>
             )} />
 
@@ -42,7 +47,8 @@ const App = (props) => {
 
 const mapStateToProps = (state) => {
     return {
-        shoppingReducer: state.shoppingReducer
+        shoppingReducer: state.shoppingReducer,
+        testReducer: state.testReducer
     }
 }
 

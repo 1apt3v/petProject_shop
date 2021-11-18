@@ -8,6 +8,7 @@ const GET_GOODS = 'GET_GOODS'
 const localCart = JSON.parse(localStorage.getItem('cart'))
 
 const initialState = {
+    // menu: [],
     goods: [],
     cart: localCart ? localCart : []
 }
