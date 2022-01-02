@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react';
 import style from './homepage.module.css'
 
-const Homepage = ({setIsMenuDisplay}) => {
+const Homepage = ({ setIsMenuDisplay }) => {
     useEffect(() => {
         setIsMenuDisplay(true)
-    }, [])
-    
+    }, [setIsMenuDisplay])
+
     return (
         <div className={style.homepage}>
             <h1>Добро пожаловать!</h1>

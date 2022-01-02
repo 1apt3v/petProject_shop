@@ -22,7 +22,7 @@ rerender(store.getState())
 
 store.subscribe(() => {
     let state = store.getState()
-    localStorage.setItem('cart', JSON.stringify(state.shoppingReducer.cart))
+    // localStorage.setItem('cart', JSON.stringify(state.shoppingReducer.cart))
     console.log("state updated")
     rerender(state)
 })

@@ -1,0 +1,17 @@
+{
+  "goods": [
+    {
+      "id": 1,
+      "name": "iPhone",
+      "price": 999,
+      "img": "https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/iphone-13-family-select-2021?wid=940&hei=1112&fmt=jpeg&qlt=80&.v=1629842667000"
+    },
+    {
+      "id": 2,
+      "name": "iPhone 12",
+      "price": 1299,
+      "img": "https://cdn.svyaznoy.ru/upload/iblock/2c3/ruru_iphone12promax_q121_pacificblue_pdp-image-1b.jpg/resize/483x483/hq/"
+    }
+  ],
+  "cart": []
+}

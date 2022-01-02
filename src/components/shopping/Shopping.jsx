@@ -8,11 +8,21 @@ import Order from './Order';
 import Loader from '../Loader/Loader';
 import Menu from '../Menu/Menu';
 import Homepage from '../Homepage/Homepage';
+import { shopAPI } from '../../api/api';
 
 
 
-const GoodsItem = ({ id, name, price, img, addCart, setModalWindowActive, setModalWindowData, setModalImgWindowActive }) => {
+const GoodsItem = ({ id, name, price, img, addCart, setModalWindowActive, setModalWindowData, setModalImgWindowActive, cart }) => {
     const [isLoaded, setIsLoaded] = useState(false)
+    const [isDisableButton, setIsDisableButton] = useState(false)
+
+    useEffect(() => {
+        if (cart.find(item => item.id === id)) {
+            setIsDisableButton(true)
+        }
+    }, [id, cart])
+
+
     return (
         <div className={styles.goodsItem} >
             <div className={styles.goodsTitle}>
@@ -33,17 +43,21 @@ const GoodsItem = ({ id, name, price, img, addCart, setModalWindowActive, setMod
                     </span>
                 </div>
             </div>
-            <button className={styles.onCartButton} onClick={() => addCart(id)}>Купить</button>
+            <button disabled={isDisableButton}
+                className={styles.onCartButton}
+                onClick={() => addCart(id)}
+            >
+                {isDisableButton ? 'В корзине' : 'Купить'}
+            </button>
         </div>
     )
 }
 
-export const Catalog = ({ goods, addCart }) => {
+export const Catalog = ({ goods, addCart, cart }) => {
     const [modalImgWindowActive, setModalImgWindowActive] = useState(false)
     const [modalWindowActive, setModalWindowActive] = useState(false)
     const [modalWindowData, setModalWindowData] = useState('')
     const [isLoaded, setIsLoaded] = useState(false)
-
 
     const goodsElements = goods
         .map(item => <GoodsItem
@@ -56,6 +70,7 @@ export const Catalog = ({ goods, addCart }) => {
             setModalWindowActive={setModalWindowActive}
             setModalWindowData={setModalWindowData}
             setModalImgWindowActive={setModalImgWindowActive}
+            cart={cart}
         />)
 
     return (
@@ -98,24 +113,14 @@ export const Catalog = ({ goods, addCart }) => {
     )
 }
 
-const Shopping = (props) => {
+
+const Shopping = ({ decrementItemInCart, incrementItemInCart, deleteCart, shoppingReducer, setGoods, setCart, addCart }) => {
     const [isMenuDisplay, setIsMenuDisplay] = useState(false)
 
     useEffect(() => {
-        //Получаем данные из Firebase
-        props.db.collection('shop')
-            .get()
-            .then(snapshot => {
-                const data = snapshot.docs.map(doc => ({
-                    id: doc.id,
-                    ...doc.data()
-                }))
-                props.getGoods(data)
-            })
-            .catch(e => {
-                console.error(e)
-            })
-    }, [])
+        shopAPI.getGoods().then(data => setGoods(data))
+        shopAPI.getCart().then(data => setCart(data))
+    }, [setGoods, setCart])
 
 
     return (
@@ -127,7 +132,7 @@ const Shopping = (props) => {
                     <input className={styles.inputFinder} type="text" placeholder="Поиск товара" />
                 </div>
                 <NavLink className={styles.buttonCart} to='/shop/cart'>
-                    <img src={cartIcon} />
+                    <img src={cartIcon} alt={cartIcon} />
                     <span>Корзина</span>
                 </NavLink>
             </div>
@@ -139,16 +144,17 @@ const Shopping = (props) => {
                     <Route exact path='/shop/order' render={() => <Order />} />
                     <Route path='/shop/smartphone'
                         render={() => <Catalog
-                            addCart={props.addCart}
-                            goods={props.shoppingReducer.goods}
+                            addCart={addCart}
+                            goods={shoppingReducer.goods}
+                            cart={shoppingReducer.cart}
                         />}
                     />
                     <Route exact path='/shop/cart'
                         render={() => <Cart
-                            decrementItemInCart={props.decrementItemInCart}
-                            incrementItemInCart={props.incrementItemInCart}
-                            deleteCart={props.deleteCart}
-                            cart={props.shoppingReducer.cart}
+                            decrementItemInCart={decrementItemInCart}
+                            incrementItemInCart={incrementItemInCart}
+                            deleteCart={deleteCart}
+                            cart={shoppingReducer.cart}
                         />}
                     />
                 </div>

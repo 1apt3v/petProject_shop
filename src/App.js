@@ -2,10 +2,8 @@ import './App.css';
 import React from 'react';
 import { connect } from 'react-redux';
 import Shopping from './components/shopping/Shopping';
-import { addCart, decrementItemInCart, deleteCart, incrementItemInCart, getGoods } from './redux/shoppingReducer';
-import { NavLink, Route, Switch } from 'react-router-dom';
-import { Redirect } from 'react-router'
-import db from './firebase/indexFirebase'
+import { addCart, decrementItemInCart, deleteCart, incrementItemInCart, setGoods, setCart } from './redux/shoppingReducer';
+import { NavLink, Route } from 'react-router-dom';
 import Test from './components/Test/Test';
 
 
@@ -23,8 +21,9 @@ const App = (props) => {
                     deleteCart={props.deleteCart}
                     addCart={props.addCart}
                     shoppingReducer={props.shoppingReducer}
-                    getGoods={props.getGoods}
-                    db={db} />
+                    setGoods={props.setGoods}
+                    setCart={props.setCart}
+                />
             </Route>
             <Route path="/test">
                 <Test testReducer={props.testReducer} />
@@ -53,7 +52,7 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = {
-    addCart, deleteCart, incrementItemInCart, decrementItemInCart, getGoods
+    addCart, deleteCart, incrementItemInCart, decrementItemInCart, setGoods, setCart
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

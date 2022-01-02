@@ -21,11 +21,10 @@ const countingAmount = (cart) => {
     }, 0);
 }
 
-function declOfNum(number, titles) {  
-    const cases = [2, 0, 1, 1, 1, 2];  
-    return titles[ (number%100>4 && number%100<20)? 2 : cases[(number%10<5)?number%10:5] ];  
+function declOfNum(number, titles) {
+    const cases = [2, 0, 1, 1, 1, 2];
+    return titles[(number % 100 > 4 && number % 100 < 20) ? 2 : cases[(number % 10 < 5) ? number % 10 : 5]];
 }
-
 
 
 const Cart = ({ cart, deleteCart, incrementItemInCart, decrementItemInCart }) => {
@@ -43,11 +42,11 @@ const Cart = ({ cart, deleteCart, incrementItemInCart, decrementItemInCart }) =>
                 </div>
             </div>
             <div className={styles.counterItemInCart}>
-                <button onClick={() => decrementItemInCart(item.id)}>-</button>
+                <button onClick={() => decrementItemInCart(item.id, item.amount)}>-</button>
                 <div className={styles.counterValue}>
                     {item.amount}
                 </div>
-                <button onClick={() => incrementItemInCart(item.id)}>+</button>
+                <button onClick={() => incrementItemInCart(item.id, item.amount)}>+</button>
             </div>
             <div className={styles.price}>{`${item.price * item.amount} ₽`}</div>
         </div>)
