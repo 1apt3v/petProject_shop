@@ -2,15 +2,62 @@
   "goods": [
     {
       "id": 1,
-      "name": "iPhone",
-      "price": 999,
-      "img": "https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/iphone-13-family-select-2021?wid=940&hei=1112&fmt=jpeg&qlt=80&.v=1629842667000"
+      "name": "Смартфон Apple iPhone SE 2020 64 ГБ красный",
+      "price": 39999,
+      "img": "https://c.dns-shop.ru/thumb/st4/fit/0/0/b64c4ce4b624ccdeccd0ace8f53c8546/135bf80ed325e9fdda1ea5dd5fccfa04343bbc328659e2c32608e6e17bcc8569.jpg",
+      "imgArray": [
+        "https://c.dns-shop.ru/thumb/st4/fit/0/0/b64c4ce4b624ccdeccd0ace8f53c8546/135bf80ed325e9fdda1ea5dd5fccfa04343bbc328659e2c32608e6e17bcc8569.jpg",
+        "https://the-istore.ru/upload/iblock/b6d/b6dc20e32c2b81727cb3b8d499190105.jpg",
+        "https://apple11.ru/21469/iphone-se-128gb-silver.jpg",
+        "https://the-istore.ru/upload/iblock/808/808fa8f9052cb4dd943572ea271e9dbb.jpg"
+      ],
+      "specifications": {}
     },
     {
       "id": 2,
-      "name": "iPhone 12",
-      "price": 1299,
-      "img": "https://cdn.svyaznoy.ru/upload/iblock/2c3/ruru_iphone12promax_q121_pacificblue_pdp-image-1b.jpg/resize/483x483/hq/"
+      "name": "Смартфон Apple iPhone 11 64 ГБ белый",
+      "price": 49999,
+      "img": "https://c.dns-shop.ru/thumb/st4/fit/500/500/a21eb3b0d675a518ea7073d218e96223/71a5351d3586ffac7e38a335faacf082405a985d4adb0d19b6759308fbcfa687.jpg",
+      "imgArray": [
+        "https://c.dns-shop.ru/thumb/st4/fit/500/500/a21eb3b0d675a518ea7073d218e96223/71a5351d3586ffac7e38a335faacf082405a985d4adb0d19b6759308fbcfa687.jpg",
+        "https://www.idevice.ru/image/data/apple/iphone-11/white.jpg",
+        "https://i4you.ru/image/cache/catalog/0.%20iPhone/21.%20iPhone%2011/1.%20Main%20photo%20in%20office%20PNG/11%20white-500x600.png"
+      ],
+      "spectifications": {
+        "general": {
+          "warranty": [
+            "Гарантия:",
+            12
+          ],
+          "age": [
+            "Год производства:",
+            2019
+          ]
+        },
+        "appearance": {
+          "color": [
+            "Цвет корпуса:",
+            "Белый"
+          ]
+        }
+      },
+      "test": {
+        "mobConnection": {
+          "4G": true,
+          "5G": false
+        },
+        "display": {
+          "diagonal": "6.1\"",
+          "resolution": "1792x828",
+          "matrix": "IPS",
+          "FPS": 60
+        },
+        "system": {
+          "OS": "IOS 13",
+          "processor": "Apple A13 Bionic",
+          "memory": "64 ГБ"
+        }
+      }
     }
   ],
   "cart": []

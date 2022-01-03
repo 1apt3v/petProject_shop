@@ -1,7 +1,7 @@
 import './App.css';
 import React from 'react';
 import { connect } from 'react-redux';
-import Shopping from './components/shopping/Shopping';
+import Shopping from './components/shopping/Shopping/Shopping';
 import { addCart, decrementItemInCart, deleteCart, incrementItemInCart, setGoods, setCart } from './redux/shoppingReducer';
 import { NavLink, Route } from 'react-router-dom';
 import Test from './components/Test/Test';
@@ -26,7 +26,7 @@ const App = (props) => {
                 />
             </Route>
             <Route path="/test">
-                <Test testReducer={props.testReducer} />
+                <Test testReducer={props.testReducer} shoppingReducer={props.shoppingReducer} />
             </Route>
 
             <Route exact path='/' render={() => (

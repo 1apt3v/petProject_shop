@@ -1,6 +1,6 @@
 import React from 'react'
-import styles from './shopping.module.css'
-import emptyCartPng from './../../assets/img/emptyCart.png'
+import styles from './cart.module.css'
+import emptyCartPng from './../../../assets/img/emptyCart.png'
 import { NavLink } from 'react-router-dom'
 
 const countingFinalPrice = (cart) => {

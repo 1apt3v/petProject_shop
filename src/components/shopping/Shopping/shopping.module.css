@@ -1,0 +1,58 @@
+.shoppingList {
+    width: 1200px;
+    height: 100vh;
+    margin: 0px auto;
+}
+
+.navigationShop {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 30px 0;
+}
+
+.navCatalog {
+    text-decoration: none;
+    color: black;
+    transition: all .15s linear;
+    cursor: pointer;
+}
+
+.navCatalog:hover {
+    color: rgb(218, 141, 0);
+}
+
+.buttonCart {
+    color: black;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100px;
+    height: 30px;
+    transition: all .15s linear;
+}
+
+.buttonCart:hover {
+    color: rgb(218, 141, 0);
+}
+
+.buttonCart a {
+    color: black;
+    text-decoration: none;
+}
+
+.buttonCart img {
+    width: 15px;
+    margin-right: 5px;
+}
+
+.inputFinder {
+    width: 500px;
+    height: 30px;
+    margin-left: 30px;
+    padding: 5px;
+    border-radius: 5px;
+    border: none;
+}

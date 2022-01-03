@@ -1,0 +1,47 @@
+.slider {
+    height: 700px;
+    width: 1000px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+    user-select: none;
+}
+
+.buttonSlide {
+    line-height: 24px;
+    position: absolute;
+    cursor: pointer;
+    z-index: 100;
+    width: 40px;
+    height: 40px;
+    font-size: 40px;
+    text-align: center;
+    transition: color .25s ease-in-out;
+}
+
+.buttonSlide:hover {
+    color: orange;
+}
+
+.leftButton {
+    left: 20px;
+}
+
+.rightButton {
+    right: 20px;
+}
+
+.imgSlide {
+    max-height: 700px;
+    max-width: 1000px;
+    /* height: 80%; */
+    opacity: 0;
+    /* object-fit: cover; */
+    transition: opacity .3s ease-in-out;
+}
+
+.imgSlideLoaded {
+    opacity: 1;
+}
