@@ -12,9 +12,8 @@
 }
 
 .imgGoods {
-    max-height: 700px;
-    max-width: 1000px;
-    cursor: pointer;
+    height: 50%;
+    /* cursor: pointer; */
     opacity: 0;
     /* object-fit: cover; */
     transition: opacity .3s ease-in-out;
@@ -36,8 +35,13 @@
     display: flex;
 }
 
-.aboutGoodsModal img {
+.aboutGoodsModalImgWrapper {
     width: 300px;
+    height: 300px;
+}
+
+.aboutGoodsModal img {
+    height: 100%
 }
 
 .spectificationGoodsModal {
@@ -51,6 +55,32 @@
     font-size: 18px;
 }
 
+.spectifications {
+    margin-top: 20px;
+}
+
 .spectification {
+    margin-bottom: 20px;
+}
+
+.title {
+    font-weight: bold;
+}
+
+.body {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 5px;
+}
+
+.bodyKey {
+    width: 55%;
+    border-bottom: 1px solid rgba(128, 128, 128, 0.377);
     
+}
+
+
+.bodyValue {
+    margin-left: 20px;
+    width: 30%;
 }

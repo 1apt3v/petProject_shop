@@ -1,5 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
+import LoaderComponent from '../Loader/Loader';
 import styles from './imageSlider.module.css'
 
 const ImageSlider = ({ array }) => {
@@ -8,19 +9,24 @@ const ImageSlider = ({ array }) => {
     const length = array.length
 
     const nextSlide = () => {
-        setCurrent(current === length - 1 ? 0 : current + 1)
+        if (length > 1) {
+            setIsLoaded(false)
+            setCurrent(current === length - 1 ? 0 : current + 1)
+        }
     }
 
+    // console.log(length)
+
     const prevSlide = () => {
-        setCurrent(current === 0 ? length - 1 : current - 1)
+        if (length > 1) {
+            setIsLoaded(false)
+            setCurrent(current === 0 ? length - 1 : current - 1)
+        }
     }
 
     return (
         <div className={styles.slider}>
-            <span className={`${styles.buttonSlide} ${styles.leftButton}`} onClick={() => {
-                setIsLoaded(false)
-                prevSlide()
-            }}>{'<'}</span>
+            <span className={`${styles.buttonSlide} ${styles.leftButton}`} onClick={prevSlide}>{'<'}</span>
 
             <div>
                 {array.map((item, index) => <div key={index}>
@@ -29,14 +35,12 @@ const ImageSlider = ({ array }) => {
                         src={item}
                         onLoad={() => setIsLoaded(true)}
                         alt={'img' + index}
-                    />)}
+                    />
+                    )}
                 </div>)}
             </div>
 
-            <span className={`${styles.buttonSlide} ${styles.rightButton}`} onClick={() => {
-                setIsLoaded(false)
-                nextSlide()
-            }} >{'>'}</span>
+            <span className={`${styles.buttonSlide} ${styles.rightButton}`} onClick={nextSlide} >{'>'}</span>
         </div>
     );
 };

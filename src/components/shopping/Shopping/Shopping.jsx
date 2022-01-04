@@ -6,18 +6,46 @@ import cartIcon from './../../../assets/img/cart.png'
 import Order from '../Order/Order';
 import Menu from '../../Menu/Menu';
 import Homepage from '../../Homepage/Homepage';
-import { shopAPI } from '../../../api/api';
 import Catalog from '../Catalog/Catalog';
+import { shopAPI } from '../../../api/api';
 
 
-const Shopping = ({ decrementItemInCart, incrementItemInCart, deleteCart, shoppingReducer, setGoods, setCart, addCart }) => {
+
+const Shopping = ({ decrementItemInCart, incrementItemInCart, deleteCart, shoppingReducer, setGoods, setCart, addCart, setNewPage }) => {
     const [isMenuDisplay, setIsMenuDisplay] = useState(false)
+    const [fetching, setFetching] = useState(true)
+    const [totalCountElements, setTotalCountElement] = useState(1)
+    const goods = shoppingReducer.goods
+    const currentPage = shoppingReducer.currentPage
 
     useEffect(() => {
-        shopAPI.getGoods().then(data => setGoods(data))
-        shopAPI.getCart().then(data => setCart(data))
+        if (fetching === true && goods.length < totalCountElements) {
+            // без проверки (fetch === true) useEffect срабатывает один лишний раз
+            // (goods.length < totalCountElements) нужен, чтобы не делать лишних запросов на сервер
+            // и не не обновлять state
+            shopAPI.getGoods(currentPage)
+                .then(({ data, totalCount }) => {
+                    setTotalCountElement(totalCount)
+                    setGoods(data)
+                    setNewPage()
+                })
+                .finally(() => setFetching(false))
+        }
+    }, [fetching])
 
-    }, [setGoods, setCart])
+    useEffect(() => {
+        document.addEventListener('scroll', handleScroll)
+        return function () {
+            document.removeEventListener('scroll', handleScroll)
+        }
+    }, [])
+
+    const handleScroll = (e) => {
+        if (e.target.documentElement.scrollHeight - (e.target.documentElement.scrollTop + window.innerHeight) < 100) {
+            // console.log('scroll');
+            setFetching(true)
+        }
+    }
 
 
     return (
@@ -42,7 +70,7 @@ const Shopping = ({ decrementItemInCart, incrementItemInCart, deleteCart, shoppi
                     <Route path='/shop/smartphone'
                         render={() => <Catalog
                             addCart={addCart}
-                            goods={shoppingReducer.goods}
+                            goods={goods}
                             cart={shoppingReducer.cart}
                         />}
                     />
@@ -52,6 +80,7 @@ const Shopping = ({ decrementItemInCart, incrementItemInCart, deleteCart, shoppi
                             incrementItemInCart={incrementItemInCart}
                             deleteCart={deleteCart}
                             cart={shoppingReducer.cart}
+                            setCart={setCart}
                         />}
                     />
                 </div>

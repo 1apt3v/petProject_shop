@@ -7,9 +7,9 @@ const instance = axios.create({
 
 
 export const shopAPI = {
-    getGoods() {
-        return instance.get(`goods`)
-            .then(response => response.data)
+    getGoods(currentPage = 1) {
+        return instance.get(`goods?_limit=5&_page=${currentPage}`)
+            .then(response => ({ data: response.data, totalCount: response.headers['x-total-count'] }))
     },
     getCart() {
         return instance.get(`cart`)
@@ -20,11 +20,11 @@ export const shopAPI = {
     },
     putIncrementAmount(id, amount) {
         console.log(amount)
-        return instance.put(`cart/${id}`, {amount})
+        return instance.put(`cart/${id}`, { amount })
     },
     putDecrementAmount(id, amount) {
         console.log(amount)
-        return instance.put(`cart/${id}`, {amount})
+        return instance.put(`cart/${id}`, { amount })
     },
     deleteItem(id) {
         return instance.delete(`cart/${id}`)

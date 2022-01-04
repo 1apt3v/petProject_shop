@@ -6,6 +6,7 @@ const INCREMENT_ITEM_IN_CART = 'INCREMENT_ITEM_IN_CART'
 const DECREMENT_ITEM_IN_CART = 'DECREMENT_ITEM_IN_CART'
 const SET_GOODS = 'GET_GOODS'
 const SET_CART = 'GET_CART'
+const SET_NEW_PAGE = 'SET_NEW_PAGE'
 
 
 
@@ -15,7 +16,8 @@ const initialState = {
     // menu: [],
     goods: [],
     // cart: localCart ? localCart : []
-    cart: []
+    cart: [],
+    currentPage: 1
 }
 
 
@@ -75,7 +77,7 @@ const shoppingReducer = (state = initialState, action) => {
             const arr = [...action.payload].sort((a, b) => a.id > b.id ? 1 : -1)
             return {
                 ...state,
-                goods: [...arr]
+                goods: [...state.goods, ...arr]
             }
         }
         case SET_CART: {
@@ -85,6 +87,7 @@ const shoppingReducer = (state = initialState, action) => {
             const cart = arr
                 .map(item => {
                     let findedGoods = goods.find(good => good.id === item.id)
+                    console.log(findedGoods)
                     findedGoods.amount = item.amount
                     return findedGoods
                 })
@@ -92,6 +95,12 @@ const shoppingReducer = (state = initialState, action) => {
             return {
                 ...state,
                 cart: [...cart]
+            }
+        }
+        case SET_NEW_PAGE: {
+            return {
+                ...state,
+                currentPage: state.currentPage + 1
             }
         }
         default:
@@ -105,6 +114,7 @@ const incrementItemInCartAC = (id) => ({ type: INCREMENT_ITEM_IN_CART, payload: 
 const decrementItemInCartAC = (id) => ({ type: DECREMENT_ITEM_IN_CART, payload: id })
 const setGoodsAC = (data) => ({ type: SET_GOODS, payload: data })
 const setCartAC = (data) => ({ type: SET_CART, payload: data })
+const setNewPageAC = () => ({ type: SET_NEW_PAGE })
 
 export const addCart = (id) => {
     return async (dispatch) => {
@@ -169,6 +179,12 @@ export const setGoods = (data) => {
 export const setCart = (data) => {
     return (dispatch) => {
         dispatch(setCartAC(data))
+    }
+}
+
+export const setNewPage = () => {
+    return (dispatch) => {
+        dispatch(setNewPageAC())
     }
 }
 

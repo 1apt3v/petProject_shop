@@ -11,6 +11,7 @@
         "https://apple11.ru/21469/iphone-se-128gb-silver.jpg",
         "https://the-istore.ru/upload/iblock/808/808fa8f9052cb4dd943572ea271e9dbb.jpg"
       ],
+      "alt": "Apple iPhone SE 2020",
       "specifications": {}
     },
     {
@@ -23,42 +24,188 @@
         "https://www.idevice.ru/image/data/apple/iphone-11/white.jpg",
         "https://i4you.ru/image/cache/catalog/0.%20iPhone/21.%20iPhone%2011/1.%20Main%20photo%20in%20office%20PNG/11%20white-500x600.png"
       ],
+      "alt": "Apple iPhone 11",
       "spectifications": {
         "general": {
           "warranty": [
-            "Гарантия:",
+            "Гарантия",
             12
           ],
           "age": [
-            "Год производства:",
+            "Год производства",
             2019
           ]
         },
         "appearance": {
           "color": [
-            "Цвет корпуса:",
+            "Цвет корпуса",
             "Белый"
           ]
-        }
-      },
-      "test": {
+        },
         "mobConnection": {
-          "4G": true,
-          "5G": false
+          "4G": [
+            "4G",
+            "есть"
+          ],
+          "5G": [
+            "5G",
+            "нет"
+          ]
         },
         "display": {
-          "diagonal": "6.1\"",
-          "resolution": "1792x828",
-          "matrix": "IPS",
-          "FPS": 60
+          "diagonal": [
+            "Диагональ",
+            "6.1\""
+          ],
+          "resolution": [
+            "Разрешение экрана",
+            "1792x828"
+          ],
+          "matrix": [
+            "Технология матрицы",
+            "IPS"
+          ],
+          "FPS": [
+            "Частота обновления",
+            60
+          ]
         },
         "system": {
-          "OS": "IOS 13",
-          "processor": "Apple A13 Bionic",
-          "memory": "64 ГБ"
+          "OS": [
+            "Операционная система",
+            "IOS 13"
+          ],
+          "processor": [
+            "Процессор",
+            "Apple A13 Bionic"
+          ],
+          "memory": [
+            "Объём памяти",
+            "64 ГБ"
+          ]
         }
       }
+    },
+    {
+      "id": 3,
+      "name": "Смартфон Apple iPhone Xr 128 ГБ красный",
+      "price": 52999,
+      "img": "https://c.dns-shop.ru/thumb/st4/fit/0/0/87848ba03eff54ac0670071ab25c5de8/785360b3c4ddf8b949f5ca52d936e36ab825046e5b03c6c9de0190fb7f74ae61.jpg",
+      "imgArray": [
+        "https://c.dns-shop.ru/thumb/st4/fit/0/0/87848ba03eff54ac0670071ab25c5de8/785360b3c4ddf8b949f5ca52d936e36ab825046e5b03c6c9de0190fb7f74ae61.jpg"
+      ],
+      "alt": "Смартфон Apple iPhone Xr 128 ГБ",
+      "specifications": {}
+    },
+    {
+      "id": 4,
+      "name": "Смартфон Apple iPhone 12 64 ГБ белый",
+      "price": 69999,
+      "img": "https://c.dns-shop.ru/thumb/st4/fit/0/0/55397a81830541f4eb540f683257f747/12092f9b71a507a98b8dccea0ad509ad042718c88cbbebc1efa76393bf4b5e2d.jpg",
+      "imgArray": [
+        "https://c.dns-shop.ru/thumb/st4/fit/0/0/55397a81830541f4eb540f683257f747/12092f9b71a507a98b8dccea0ad509ad042718c88cbbebc1efa76393bf4b5e2d.jpg"
+      ],
+      "alt": "Смартфон Apple iPhone 12 64 ГБ",
+      "specifications": {}
+    },
+    {
+      "id": 5,
+      "name": "Смартфон Apple iPhone 13 mini 128 ГБ белый",
+      "price": 75999,
+      "img": "https://c.dns-shop.ru/thumb/st1/fit/0/0/597416eede60d7b273354ab1202bebe9/07259d47b639450e58e0e2c3f1448bc3cf7b99e6d735956b0685abcce94bc70a.jpg",
+      "imgArray": [
+        "https://c.dns-shop.ru/thumb/st1/fit/0/0/597416eede60d7b273354ab1202bebe9/07259d47b639450e58e0e2c3f1448bc3cf7b99e6d735956b0685abcce94bc70a.jpg"
+      ],
+      "alt": "Смартфон Apple iPhone 12 64 ГБ",
+      "specifications": {}
+    },
+    {
+      "id": 6,
+      "name": "Apple iPhone 7 32 Гб черный матовый",
+      "price": 7999,
+      "img": "https://c.dns-shop.ru/thumb/st4/fit/0/0/4d99a167663d5314d09b95e222315149/9f7d73ba14a6ce0c453b2c26414ff38baba910c426d01d394b4a057d515e20e1.jpg",
+      "imgArray": [
+        "https://c.dns-shop.ru/thumb/st4/fit/0/0/4d99a167663d5314d09b95e222315149/9f7d73ba14a6ce0c453b2c26414ff38baba910c426d01d394b4a057d515e20e1.jpg"
+      ],
+      "alt": "Apple iPhone 7 32 Гб черный матовый",
+      "specifications": {}
+    },
+    {
+      "id": 7,
+      "name": "Смартфон Apple iPhone Xs 64 ГБ золотистый",
+      "price": 42999,
+      "img": "https://c.dns-shop.ru/thumb/st1/fit/0/0/7d22b85d262f4090ff1e377cd351081a/c83f91b581a4d23192f3e6ca9797fee15a45daa5eb30da99a6b9a5612b8331ce.jpg",
+      "imgArray": [
+        "https://c.dns-shop.ru/thumb/st1/fit/0/0/7d22b85d262f4090ff1e377cd351081a/c83f91b581a4d23192f3e6ca9797fee15a45daa5eb30da99a6b9a5612b8331ce.jpg"
+      ],
+      "alt": "Смартфон Apple iPhone Xs 64 ГБ золотистый",
+      "specifications": {}
+    },
+    {
+      "id": 8,
+      "name": "Смартфон Apple iPhone Xs Max 64 ГБ золотистый",
+      "price": 119999,
+      "img": "https://c.dns-shop.ru/thumb/st4/fit/0/0/64cf5fc5ac6b08d8d4c5d40af9e0968f/7782e89bf1d964630b27dc8403e9e4a482f7e9dd801951c052025cbc09bdc100.jpg",
+      "imgArray": [
+        "https://c.dns-shop.ru/thumb/st4/fit/0/0/64cf5fc5ac6b08d8d4c5d40af9e0968f/7782e89bf1d964630b27dc8403e9e4a482f7e9dd801951c052025cbc09bdc100.jpg"
+      ],
+      "alt": "Смартфон Apple iPhone Xs Max 64 ГБ золотистый",
+      "specifications": {}
+    },
+    {
+      "id": 9,
+      "name": "Смартфон Apple iPhone 12 Mini 64 ГБ синий",
+      "price": 58999,
+      "img": "https://c.dns-shop.ru/thumb/st4/fit/0/0/d0959fdeeca641d97b1e8f8108e45d77/534489f34bc464e4cf68522999686645c9ac3ea0cca7faa03cef57480237d900.jpg",
+      "imgArray": [
+        "https://c.dns-shop.ru/thumb/st4/fit/0/0/d0959fdeeca641d97b1e8f8108e45d77/534489f34bc464e4cf68522999686645c9ac3ea0cca7faa03cef57480237d900.jpg"
+      ],
+      "alt": "Смартфон Apple iPhone 12 Mini 64 ГБ синий",
+      "specifications": {}
+    },
+    {
+      "id": 10,
+      "name": "Смартфон Apple iPhone 12 Pro Max 512 ГБ серебристый",
+      "price": 119999,
+      "img": "https://c.dns-shop.ru/thumb/st4/fit/0/0/50d2a684d09b85551a88b3004fe2e214/3ee35351f124ec0778137ed168ac5c96218969f565b244777f85cb3c34b4e4b5.jpg",
+      "imgArray": [
+        "https://c.dns-shop.ru/thumb/st4/fit/0/0/50d2a684d09b85551a88b3004fe2e214/3ee35351f124ec0778137ed168ac5c96218969f565b244777f85cb3c34b4e4b5.jpg"
+      ],
+      "alt": "Смартфон Apple iPhone 12 64 ГБ",
+      "specifications": {}
+    },
+    {
+      "id": 11,
+      "name": "Смартфон Apple iPhone 11 Pro 512 ГБ золотистый",
+      "price": 72999,
+      "img": "https://c.dns-shop.ru/thumb/st4/fit/0/0/d16148333d45f81b5eb6c505a11a8e87/ff3435d14d713cc3ed67f2862e3367897c030bc8903b063b1f569824796aa56b.jpg",
+      "imgArray": [
+        "https://c.dns-shop.ru/thumb/st4/fit/0/0/d16148333d45f81b5eb6c505a11a8e87/ff3435d14d713cc3ed67f2862e3367897c030bc8903b063b1f569824796aa56b.jpg"
+      ],
+      "alt": "Смартфон Apple iPhone 11 Pro 512 ГБ золотистый",
+      "specifications": {}
     }
   ],
-  "cart": []
+  "cart": [
+    {
+      "id": 1,
+      "amount": 1
+    },
+    {
+      "id": 2,
+      "amount": 1
+    },
+    {
+      "id": 3,
+      "amount": 1
+    },
+    {
+      "id": 4,
+      "amount": 1
+    },
+    {
+      "id": 5,
+      "amount": 1
+    }
+  ]
 }

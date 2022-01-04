@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from 'react'
-import styles from './goodsItems.module.css'
+import styles from './goodsItem.module.css'
 
 const GoodsItem = ({ id, name, price, img, imgArray, spectifications, addCart, setModalWindowActive, setModalWindowData, setModalImgWindowActive, cart }) => {
     const [isLoaded, setIsLoaded] = useState(false)
     const [isDisableButton, setIsDisableButton] = useState(false)
-
-
 
     useEffect(() => {
         if (cart.find(item => item.id === id)) {

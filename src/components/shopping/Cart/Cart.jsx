@@ -2,6 +2,8 @@ import React from 'react'
 import styles from './cart.module.css'
 import emptyCartPng from './../../../assets/img/emptyCart.png'
 import { NavLink } from 'react-router-dom'
+import { shopAPI } from '../../../api/api'
+import { useEffect } from 'react'
 
 const countingFinalPrice = (cart) => {
     if (cart === undefined) {
@@ -27,7 +29,13 @@ function declOfNum(number, titles) {
 }
 
 
-const Cart = ({ cart, deleteCart, incrementItemInCart, decrementItemInCart }) => {
+const Cart = ({ cart, deleteCart, incrementItemInCart, decrementItemInCart, setCart }) => {
+
+    useEffect(() => {
+        shopAPI.getCart()
+            .then(data => setCart(data))
+    }, [setCart])
+
     const price = countingFinalPrice(cart)
     const amount = countingAmount(cart)
     const nameAmountWord = declOfNum(amount, ['товар', 'товара', 'товаров'])

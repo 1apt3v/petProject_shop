@@ -2,7 +2,7 @@ import './App.css';
 import React from 'react';
 import { connect } from 'react-redux';
 import Shopping from './components/shopping/Shopping/Shopping';
-import { addCart, decrementItemInCart, deleteCart, incrementItemInCart, setGoods, setCart } from './redux/shoppingReducer';
+import { addCart, decrementItemInCart, deleteCart, incrementItemInCart, setGoods, setCart, setNewPage } from './redux/shoppingReducer';
 import { NavLink, Route } from 'react-router-dom';
 import Test from './components/Test/Test';
 
@@ -23,6 +23,7 @@ const App = (props) => {
                     shoppingReducer={props.shoppingReducer}
                     setGoods={props.setGoods}
                     setCart={props.setCart}
+                    setNewPage={props.setNewPage}
                 />
             </Route>
             <Route path="/test">
@@ -52,7 +53,7 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = {
-    addCart, deleteCart, incrementItemInCart, decrementItemInCart, setGoods, setCart
+    addCart, deleteCart, incrementItemInCart, decrementItemInCart, setGoods, setCart, setNewPage
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
