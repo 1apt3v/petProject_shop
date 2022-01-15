@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styles from './cart.module.css'
 import emptyCartPng from './../../../assets/img/emptyCart.png'
 import { NavLink } from 'react-router-dom'
 import { shopAPI } from '../../../api/api'
 import { useEffect } from 'react'
+import LoaderComponent from '../../Loader/Loader'
 
 const countingFinalPrice = (cart) => {
     if (cart === undefined) {
@@ -29,12 +30,8 @@ function declOfNum(number, titles) {
 }
 
 
-const Cart = ({ cart, deleteCart, incrementItemInCart, decrementItemInCart, setCart }) => {
+const Cart = ({ cart, deleteCart, incrementItemInCart, decrementItemInCart, fetchingCart }) => {
 
-    useEffect(() => {
-        shopAPI.getCart()
-            .then(data => setCart(data))
-    }, [setCart])
 
     const price = countingFinalPrice(cart)
     const amount = countingAmount(cart)
@@ -65,12 +62,15 @@ const Cart = ({ cart, deleteCart, incrementItemInCart, decrementItemInCart, setC
             <h1>Корзина</h1>
             <div className={styles.cart}>
                 <div className={styles.cartItemsResult} >
-                    {cart.length
-                        ? cartElements
-                        : <div className={styles.emptyCart}>
-                            <img src={emptyCartPng} alt="emptyCart" />
-                            <span>Корзина пустая</span>
-                        </div>
+                    {
+                        fetchingCart
+                            ? <LoaderComponent />
+                            : cart.length
+                                ? cartElements
+                                : <div className={styles.emptyCart}>
+                                    <img src={emptyCartPng} alt="emptyCart" />
+                                    <span>Корзина пустая</span>
+                                </div>
                     }
                 </div>
                 <div className={styles.buyBlock}>

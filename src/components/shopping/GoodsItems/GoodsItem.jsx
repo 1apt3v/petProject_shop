@@ -1,13 +1,16 @@
 import React, { useEffect, useState } from 'react'
+import { useHistory } from 'react-router-dom'
 import styles from './goodsItem.module.css'
 
 const GoodsItem = ({ id, name, price, img, imgArray, spectifications, addCart, setModalWindowActive, setModalWindowData, setModalImgWindowActive, cart }) => {
     const [isLoaded, setIsLoaded] = useState(false)
-    const [isDisableButton, setIsDisableButton] = useState(false)
+    const [goodInCart, setGoodInCart] = useState(false)
+
+    let history = useHistory()
 
     useEffect(() => {
         if (cart.find(item => item.id === id)) {
-            setIsDisableButton(true)
+            setGoodInCart(true)
         }
     }, [id, cart])
 
@@ -39,11 +42,18 @@ const GoodsItem = ({ id, name, price, img, imgArray, spectifications, addCart, s
                 <div className={styles.price}>
                     {`${price} ₽`}
                 </div>
-                <button disabled={isDisableButton}
-                    className={styles.goCartButton}
-                    onClick={() => addCart(id)}
+                <button
+                    className={goodInCart ? styles.goCartBuyButton : styles.buyButton}
+                    onClick={() => {
+                        if (goodInCart) {
+                            history.push("/shop/cart")
+                        } else {
+                            addCart(id)
+                        }
+
+                    }}
                 >
-                    {isDisableButton ? 'В корзине' : 'Купить'}
+                    {goodInCart ? 'В корзине' : 'Купить'}
                 </button>
             </div>
 

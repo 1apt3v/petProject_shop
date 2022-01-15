@@ -2,7 +2,17 @@ import './App.css';
 import React from 'react';
 import { connect } from 'react-redux';
 import Shopping from './components/shopping/Shopping/Shopping';
-import { addCart, decrementItemInCart, deleteCart, incrementItemInCart, setGoods, setCart, setNewPage } from './redux/shoppingReducer';
+import {
+    addCart,
+    decrementItemInCart,
+    deleteCart,
+    incrementItemInCart,
+    setGoods,
+    setCart,
+    setNewPage,
+    setDefaultValueArrayGoods,
+    setTotalCountGoods
+} from './redux/shoppingReducer';
 import { NavLink, Route } from 'react-router-dom';
 import Test from './components/Test/Test';
 
@@ -16,6 +26,7 @@ const App = (props) => {
 
             <Route path="/shop">
                 <Shopping
+                    goods={props.shoppingReducer.goods}
                     decrementItemInCart={props.decrementItemInCart}
                     incrementItemInCart={props.incrementItemInCart}
                     deleteCart={props.deleteCart}
@@ -24,10 +35,20 @@ const App = (props) => {
                     setGoods={props.setGoods}
                     setCart={props.setCart}
                     setNewPage={props.setNewPage}
+                    cart={props.shoppingReducer.cart}
+                    setDefaultValueArrayGoods={props.setDefaultValueArrayGoods}
+                    setTotalCountGoods={props.setTotalCountGoods}
+                    totalCountGoods={props.shoppingReducer.totalCountGoods}
                 />
             </Route>
             <Route path="/test">
-                <Test testReducer={props.testReducer} shoppingReducer={props.shoppingReducer} />
+                <Test
+                    shoppingReducer={props.shoppingReducer}
+                    setGoods={props.setGoods}
+                    setNewPage={props.setNewPage}
+                    setDefaultValueArrayGoods={props.setDefaultValueArrayGoods}
+                    setNewPage={props.setNewPage}
+                />
             </Route>
 
             <Route exact path='/' render={() => (
@@ -53,7 +74,10 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = {
-    addCart, deleteCart, incrementItemInCart, decrementItemInCart, setGoods, setCart, setNewPage
+    addCart, deleteCart, incrementItemInCart,
+    decrementItemInCart, setGoods, setCart,
+    setNewPage, setDefaultValueArrayGoods,
+    setTotalCountGoods
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

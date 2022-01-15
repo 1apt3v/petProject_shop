@@ -2,7 +2,7 @@ import React, { useState } from "react"
 import { NavLink } from "react-router-dom"
 import style from './menu.module.css'
 
-const Menu = ({ name, links, setIsMenuDisplay }) => {
+const MenuElement = ({ name, links, setIsMenuDisplay }) => {
     const [display, setDisplay] = useState(false)
     return (
         <div className={style.menu} onMouseEnter={() => setDisplay(true)} onMouseLeave={() => setDisplay(false)}>
@@ -29,20 +29,20 @@ const RootMenu = ({setIsMenuDisplay}) => {
         {
             name: 'Смартфоны и гаджеты',
             links: [
-                { nameLink: 'Смартфоны', link: '/shop/smartphone' }
+                { nameLink: 'Смартфоны', link: '/shop/catalog/smartphones' }
             ]
         },
         {
             name: 'Компьютеры и периферия',
             links: [
-                { nameLink: 'Компьютеры', link: '/shop/computers' }
+                { nameLink: 'Компьютеры', link: '/shop/catalog/computers' }
             ]
         }
     ]
 
     return (
         <div className={style.root__menu}>
-            {data.map(link => <Menu key={link.name} name={link.name} links={link.links} setIsMenuDisplay={setIsMenuDisplay} />)}
+            {data.map(link => <MenuElement key={link.name} name={link.name} links={link.links} setIsMenuDisplay={setIsMenuDisplay} />)}
         </div>
     )
 }

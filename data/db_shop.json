@@ -2,6 +2,7 @@
   "goods": [
     {
       "id": 1,
+      "category": "smartphones",
       "name": "Смартфон Apple iPhone SE 2020 64 ГБ красный",
       "price": 39999,
       "img": "https://c.dns-shop.ru/thumb/st4/fit/0/0/b64c4ce4b624ccdeccd0ace8f53c8546/135bf80ed325e9fdda1ea5dd5fccfa04343bbc328659e2c32608e6e17bcc8569.jpg",
@@ -16,6 +17,7 @@
     },
     {
       "id": 2,
+      "category": "smartphones",
       "name": "Смартфон Apple iPhone 11 64 ГБ белый",
       "price": 49999,
       "img": "https://c.dns-shop.ru/thumb/st4/fit/500/500/a21eb3b0d675a518ea7073d218e96223/71a5351d3586ffac7e38a335faacf082405a985d4adb0d19b6759308fbcfa687.jpg",
@@ -88,6 +90,7 @@
     },
     {
       "id": 3,
+      "category": "smartphones",
       "name": "Смартфон Apple iPhone Xr 128 ГБ красный",
       "price": 52999,
       "img": "https://c.dns-shop.ru/thumb/st4/fit/0/0/87848ba03eff54ac0670071ab25c5de8/785360b3c4ddf8b949f5ca52d936e36ab825046e5b03c6c9de0190fb7f74ae61.jpg",
@@ -99,6 +102,7 @@
     },
     {
       "id": 4,
+      "category": "smartphones",
       "name": "Смартфон Apple iPhone 12 64 ГБ белый",
       "price": 69999,
       "img": "https://c.dns-shop.ru/thumb/st4/fit/0/0/55397a81830541f4eb540f683257f747/12092f9b71a507a98b8dccea0ad509ad042718c88cbbebc1efa76393bf4b5e2d.jpg",
@@ -110,6 +114,7 @@
     },
     {
       "id": 5,
+      "category": "smartphones",
       "name": "Смартфон Apple iPhone 13 mini 128 ГБ белый",
       "price": 75999,
       "img": "https://c.dns-shop.ru/thumb/st1/fit/0/0/597416eede60d7b273354ab1202bebe9/07259d47b639450e58e0e2c3f1448bc3cf7b99e6d735956b0685abcce94bc70a.jpg",
@@ -121,6 +126,7 @@
     },
     {
       "id": 6,
+      "category": "smartphones",
       "name": "Apple iPhone 7 32 Гб черный матовый",
       "price": 7999,
       "img": "https://c.dns-shop.ru/thumb/st4/fit/0/0/4d99a167663d5314d09b95e222315149/9f7d73ba14a6ce0c453b2c26414ff38baba910c426d01d394b4a057d515e20e1.jpg",
@@ -132,6 +138,7 @@
     },
     {
       "id": 7,
+      "category": "smartphones",
       "name": "Смартфон Apple iPhone Xs 64 ГБ золотистый",
       "price": 42999,
       "img": "https://c.dns-shop.ru/thumb/st1/fit/0/0/7d22b85d262f4090ff1e377cd351081a/c83f91b581a4d23192f3e6ca9797fee15a45daa5eb30da99a6b9a5612b8331ce.jpg",
@@ -143,6 +150,7 @@
     },
     {
       "id": 8,
+      "category": "smartphones",
       "name": "Смартфон Apple iPhone Xs Max 64 ГБ золотистый",
       "price": 119999,
       "img": "https://c.dns-shop.ru/thumb/st4/fit/0/0/64cf5fc5ac6b08d8d4c5d40af9e0968f/7782e89bf1d964630b27dc8403e9e4a482f7e9dd801951c052025cbc09bdc100.jpg",
@@ -154,6 +162,7 @@
     },
     {
       "id": 9,
+      "category": "smartphones",
       "name": "Смартфон Apple iPhone 12 Mini 64 ГБ синий",
       "price": 58999,
       "img": "https://c.dns-shop.ru/thumb/st4/fit/0/0/d0959fdeeca641d97b1e8f8108e45d77/534489f34bc464e4cf68522999686645c9ac3ea0cca7faa03cef57480237d900.jpg",
@@ -165,6 +174,7 @@
     },
     {
       "id": 10,
+      "category": "smartphones",
       "name": "Смартфон Apple iPhone 12 Pro Max 512 ГБ серебристый",
       "price": 119999,
       "img": "https://c.dns-shop.ru/thumb/st4/fit/0/0/50d2a684d09b85551a88b3004fe2e214/3ee35351f124ec0778137ed168ac5c96218969f565b244777f85cb3c34b4e4b5.jpg",
@@ -176,8 +186,21 @@
     },
     {
       "id": 11,
+      "category": "smartphones",
       "name": "Смартфон Apple iPhone 11 Pro 512 ГБ золотистый",
       "price": 72999,
+      "img": "https://c.dns-shop.ru/thumb/st4/fit/0/0/d16148333d45f81b5eb6c505a11a8e87/ff3435d14d713cc3ed67f2862e3367897c030bc8903b063b1f569824796aa56b.jpg",
+      "imgArray": [
+        "https://c.dns-shop.ru/thumb/st4/fit/0/0/d16148333d45f81b5eb6c505a11a8e87/ff3435d14d713cc3ed67f2862e3367897c030bc8903b063b1f569824796aa56b.jpg"
+      ],
+      "alt": "Смартфон Apple iPhone 11 Pro 512 ГБ золотистый",
+      "specifications": {}
+    },
+    {
+      "id": 12,
+      "category": "computers",
+      "name": "Топ ПК",
+      "price": 1000,
       "img": "https://c.dns-shop.ru/thumb/st4/fit/0/0/d16148333d45f81b5eb6c505a11a8e87/ff3435d14d713cc3ed67f2862e3367897c030bc8903b063b1f569824796aa56b.jpg",
       "imgArray": [
         "https://c.dns-shop.ru/thumb/st4/fit/0/0/d16148333d45f81b5eb6c505a11a8e87/ff3435d14d713cc3ed67f2862e3367897c030bc8903b063b1f569824796aa56b.jpg"
@@ -189,23 +212,18 @@
   "cart": [
     {
       "id": 1,
-      "amount": 1
+      "amount": 1,
+      "timeAdd": 1641925676340
     },
     {
       "id": 2,
-      "amount": 1
+      "amount": 1,
+      "timeAdd": 1641925678057
     },
     {
       "id": 3,
-      "amount": 1
-    },
-    {
-      "id": 4,
-      "amount": 1
-    },
-    {
-      "id": 5,
-      "amount": 1
+      "amount": 1,
+      "timeAdd": 1641925679586
     }
   ]
 }

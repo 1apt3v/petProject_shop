@@ -1,5 +1,5 @@
 .filterMenu {
-    width: 100%;
+    width: 400px;
     height: 300px;
     border-radius: 15px;
     background-color: white;
@@ -9,6 +9,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.goodsElementsWrapper {
+    width: 100%
 }
 
 .imgGoods {
@@ -83,4 +87,10 @@
 .bodyValue {
     margin-left: 20px;
     width: 30%;
+}
+
+.loader {
+    display: flex;
+    align-content: center;
+    justify-content: center;
 }

@@ -11,41 +11,45 @@ import { shopAPI } from '../../../api/api';
 
 
 
-const Shopping = ({ decrementItemInCart, incrementItemInCart, deleteCart, shoppingReducer, setGoods, setCart, addCart, setNewPage }) => {
+const Shopping = ({
+    goods,
+    decrementItemInCart,
+    incrementItemInCart,
+    deleteCart,
+    shoppingReducer,
+    setGoods,
+    setCart,
+    addCart,
+    setNewPage,
+    cart,
+    setDefaultValueArrayGoods,
+    setTotalCountGoods,
+    totalCountGoods }) => {
     const [isMenuDisplay, setIsMenuDisplay] = useState(false)
-    const [fetching, setFetching] = useState(true)
-    const [totalCountElements, setTotalCountElement] = useState(1)
-    const goods = shoppingReducer.goods
-    const currentPage = shoppingReducer.currentPage
+
+
+    const [fetchingCart, setFetchingCart] = useState(true)
+    const [totalCountElementsCart, setTotalCountElementCart] = useState(1)
+
 
     useEffect(() => {
-        if (fetching === true && goods.length < totalCountElements) {
-            // без проверки (fetch === true) useEffect срабатывает один лишний раз
-            // (goods.length < totalCountElements) нужен, чтобы не делать лишних запросов на сервер
-            // и не не обновлять state
-            shopAPI.getGoods(currentPage)
-                .then(({ data, totalCount }) => {
-                    setTotalCountElement(totalCount)
-                    setGoods(data)
-                    setNewPage()
+        if (cart.length < totalCountElementsCart) {
+            shopAPI.getCart()
+                .then((data, totalCount) => {
+                    if (!data.length) {
+                        setFetchingCart(false)
+                        return
+                    }
+                    setTotalCountElementCart(totalCount)
+                    data.map(item => shopAPI.getGoodsToCart(item.id)
+                        .then(goods => setCart(...goods.data, item.amount, item.timeAdd))
+                        .finally(() => setFetchingCart(false))
+                    )
                 })
-                .finally(() => setFetching(false))
         }
-    }, [fetching])
+    }, [fetchingCart])
 
-    useEffect(() => {
-        document.addEventListener('scroll', handleScroll)
-        return function () {
-            document.removeEventListener('scroll', handleScroll)
-        }
-    }, [])
 
-    const handleScroll = (e) => {
-        if (e.target.documentElement.scrollHeight - (e.target.documentElement.scrollTop + window.innerHeight) < 100) {
-            // console.log('scroll');
-            setFetching(true)
-        }
-    }
 
 
     return (
@@ -67,11 +71,17 @@ const Shopping = ({ decrementItemInCart, incrementItemInCart, deleteCart, shoppi
                 <div>
                     <Route exact path='/shop' render={() => <Homepage setIsMenuDisplay={setIsMenuDisplay} />} />
                     <Route exact path='/shop/order' render={() => <Order />} />
-                    <Route path='/shop/smartphone'
+                    <Route path='/shop/catalog/:category'
                         render={() => <Catalog
+                            currentPage={shoppingReducer.currentPage}
                             addCart={addCart}
                             goods={goods}
+                            totalCountGoods={totalCountGoods}
                             cart={shoppingReducer.cart}
+                            setNewPage={setNewPage}
+                            setGoods={setGoods}
+                            setDefaultValueArrayGoods={setDefaultValueArrayGoods}
+                            setTotalCountGoods={setTotalCountGoods}
                         />}
                     />
                     <Route exact path='/shop/cart'
@@ -79,8 +89,9 @@ const Shopping = ({ decrementItemInCart, incrementItemInCart, deleteCart, shoppi
                             decrementItemInCart={decrementItemInCart}
                             incrementItemInCart={incrementItemInCart}
                             deleteCart={deleteCart}
-                            cart={shoppingReducer.cart}
+                            cart={cart}
                             setCart={setCart}
+                            fetchingCart={fetchingCart}
                         />}
                     />
                 </div>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Loader from '../../Loader/Loader';
 import styles from './catalog.module.css'
 import ModalWindow from '../../reusableComponents/ModalWindows/ModalWindow';
@@ -6,11 +6,16 @@ import GoodsItem from '../GoodsItems/GoodsItem';
 import ImageSlider from '../../ImageSlider/ImageSlider';
 import LoaderComponent from '../../Loader/Loader';
 import SpecModal from './SpecModal';
-import { useEffect } from 'react';
+import { withRouter } from 'react-router';
 import { shopAPI } from '../../../api/api';
 
-
-const Catalog = ({ goods, addCart, cart }) => {
+const Catalog = ({
+    goods, addCart, cart,
+    currentPage, setGoods,
+    setNewPage, setDefaultValueArrayGoods,
+    setTotalCountGoods, totalCountGoods,
+    ...props
+}) => {
     const [modalImgWindowActive, setModalImgWindowActive] = useState(false)
     const [modalWindowActive, setModalWindowActive] = useState(false)
     const [modalWindowData, setModalWindowData] = useState('')
@@ -18,6 +23,51 @@ const Catalog = ({ goods, addCart, cart }) => {
 
     const modalData = modalWindowData.spectifications
 
+    const [fetchingGoods, setFetchingGoods] = useState(true)
+    const [category, setCategory] = useState('')
+
+    useEffect(() => {
+        document.addEventListener('scroll', handleScroll)
+        return () => {
+            document.removeEventListener('scroll', handleScroll)
+        }
+    }, [])
+
+    const handleScroll = (e) => {
+        if (e.target.documentElement.scrollHeight - (e.target.documentElement.scrollTop + window.innerHeight) < 100) {
+            setFetchingGoods(true)
+        } else {
+            setFetchingGoods(false)
+        }
+    }
+
+    useEffect(() => {
+
+        if (category !== props.match.params.category) {
+            setFetchingGoods(true)
+            setTotalCountGoods(0)
+            setDefaultValueArrayGoods()
+            setCategory(props.match.params.category)
+        }
+
+
+        if (fetchingGoods === true && (goods.length < totalCountGoods || totalCountGoods === 0)) {
+            // без проверки (fetch === true) useEffect срабатывает один лишний раз
+            // (goods.length < totalCountElements) нужен, чтобы не делать лишних запросов на сервер
+            // и не не обновлять state
+
+            shopAPI.getGoods(currentPage, props.match.params.category)
+                .then(({ data, totalCount }) => {
+                    setTotalCountGoods(totalCount)
+                    setGoods(data)
+                    setNewPage()
+                    setFetchingGoods(false)
+                })
+                .catch(e => console.error(e))
+            // .finally(() => setFetchingGoods(false))
+        }
+
+    }, [fetchingGoods, props.match.params.category])
 
     const goodsElements = goods
         .map(item => <GoodsItem
@@ -43,14 +93,20 @@ const Catalog = ({ goods, addCart, cart }) => {
         <div>
             <h1>Каталог</h1>
 
-            {
-                goods.length
-                    ? <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                        <div className={styles.filterMenu}>Filter</div>
-                        <div>{goodsElements}</div>
+            <div>
+                <div style={{ display: 'flex' }}>
+                    <div className={styles.filterMenu}>Filter</div>
+                    <div className={styles.goodsElementsWrapper} >
+                        {
+                            goods.length
+                                ? (goodsElements)
+                                : <div className={styles.loader}>
+                                    <Loader />
+                                </div>
+                        }
                     </div>
-                    : <Loader />
-            }
+                </div>
+            </div>
 
             {modalImgWindowActive
                 ? <ModalWindow active={modalImgWindowActive}
@@ -96,7 +152,6 @@ const Catalog = ({ goods, addCart, cart }) => {
                                         <SpecModal data={modalData.system} name={'Система'} />
                                     </>
                                     : "Данных нет"
-
                                 }
                             </div>
 
@@ -114,4 +169,6 @@ const Catalog = ({ goods, addCart, cart }) => {
     )
 }
 
-export default Catalog
+
+
+export default withRouter(Catalog)

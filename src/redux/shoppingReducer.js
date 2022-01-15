@@ -1,12 +1,14 @@
 import { shopAPI } from "../api/api"
 
-const BUY_GOODS = 'BUY_GOODS'
+const ADD_CART = 'ADD_CART'
 const DELETE_GOODS = 'DELETE_GOODS'
 const INCREMENT_ITEM_IN_CART = 'INCREMENT_ITEM_IN_CART'
 const DECREMENT_ITEM_IN_CART = 'DECREMENT_ITEM_IN_CART'
 const SET_GOODS = 'GET_GOODS'
 const SET_CART = 'GET_CART'
 const SET_NEW_PAGE = 'SET_NEW_PAGE'
+const SET_DEFAULT_VALUE_ARRAY_GOODS = 'SET_DEFAULT_VALUE_ARRAY_GOODS'
+const SET_TOTAL_COUNT_GOODS = 'SET_TOTAL_COUNT_GOODS'
 
 
 
@@ -17,23 +19,16 @@ const initialState = {
     goods: [],
     // cart: localCart ? localCart : []
     cart: [],
-    currentPage: 1
+    currentPage: 1,
+    totalCountGoods: 0
 }
 
 
 
 const shoppingReducer = (state = initialState, action) => {
     switch (action.type) {
-        case BUY_GOODS: {
-            if (state.cart.find(goods => goods.id === action.payload)) {
-                let newState = { ...state }
-                newState.cart.find(goods => goods.id === action.payload).amount += 1
-                return {
-                    ...state,
-                    cart: newState.cart
-                }
-            }
-            const item = { ...state.goods[action.payload - 1], amount: 1 }
+        case ADD_CART: {
+            const item = { ...state.goods[action.payload.id - 1], amount: 1 }
             return {
                 ...state,
                 cart: [...state.cart, item]
@@ -81,20 +76,14 @@ const shoppingReducer = (state = initialState, action) => {
             }
         }
         case SET_CART: {
-            const arr = action.payload
-            const goods = state.goods
-
-            const cart = arr
-                .map(item => {
-                    let findedGoods = goods.find(good => good.id === item.id)
-                    console.log(findedGoods)
-                    findedGoods.amount = item.amount
-                    return findedGoods
-                })
-                .sort((a, b) => a.id > b.id ? 1 : -1)
+            const elemCart = {
+                ...action.payload.data,
+                amount: action.payload.amount
+            }
+            const arr = [...state.cart, elemCart].sort((a, b) => a.timeAdd > b.timeAdd ? 1 : -1)
             return {
                 ...state,
-                cart: [...cart]
+                cart: arr
             }
         }
         case SET_NEW_PAGE: {
@@ -103,26 +92,44 @@ const shoppingReducer = (state = initialState, action) => {
                 currentPage: state.currentPage + 1
             }
         }
+        case SET_DEFAULT_VALUE_ARRAY_GOODS: {
+            return {
+                ...state,
+                goods: [],
+                currentPage: 1
+            }
+        }
+        case SET_TOTAL_COUNT_GOODS: {
+            return {
+                ...state,
+                totalCountGoods: action.payload
+            }
+        }
+
+
         default:
             return state
     }
 }
 
-const addCartAC = (id) => ({ type: BUY_GOODS, payload: id })
+const addCartAC = (id, timeAdd) => ({ type: ADD_CART, payload: { id, timeAdd } })
 const deleteCartAC = (id) => ({ type: DELETE_GOODS, payload: id })
 const incrementItemInCartAC = (id) => ({ type: INCREMENT_ITEM_IN_CART, payload: id })
 const decrementItemInCartAC = (id) => ({ type: DECREMENT_ITEM_IN_CART, payload: id })
 const setGoodsAC = (data) => ({ type: SET_GOODS, payload: data })
-const setCartAC = (data) => ({ type: SET_CART, payload: data })
+const setCartAC = (data, amount, timeAdd) => ({ type: SET_CART, payload: { data, amount, timeAdd } })
 const setNewPageAC = () => ({ type: SET_NEW_PAGE })
+const setDefaultValueArrayGoodsAC = () => ({ type: SET_DEFAULT_VALUE_ARRAY_GOODS })
+const setTotalCountGoodsAC = (count) => ({ type: SET_TOTAL_COUNT_GOODS, payload: count })
 
 export const addCart = (id) => {
     return async (dispatch) => {
         try {
-            let response = await shopAPI.postCart(id)
+            const timeAdd = Date.now()
+            let response = await shopAPI.postCart(id, timeAdd)
             console.log(response)
             if (response.status >= 200 && response.status < 300) {
-                dispatch(addCartAC(id))
+                dispatch(addCartAC(id, timeAdd))
             }
         } catch (e) {
             console.error('Error: ', e)
@@ -176,15 +183,27 @@ export const setGoods = (data) => {
     }
 }
 
-export const setCart = (data) => {
+export const setCart = (data, amount, timeAdd) => {
     return (dispatch) => {
-        dispatch(setCartAC(data))
+        dispatch(setCartAC(data, amount, timeAdd))
     }
 }
 
 export const setNewPage = () => {
     return (dispatch) => {
         dispatch(setNewPageAC())
+    }
+}
+
+export const setDefaultValueArrayGoods = () => {
+    return (dispatch) => {
+        dispatch(setDefaultValueArrayGoodsAC())
+    }
+}
+
+export const setTotalCountGoods = (count) => {
+    return (dispatch) => {
+        dispatch(setTotalCountGoodsAC(count))
     }
 }
 
