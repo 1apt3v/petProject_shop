@@ -29,6 +29,7 @@
       "alt": "Apple iPhone 11",
       "spectifications": {
         "general": {
+          "nameCategory": "Главное",
           "warranty": [
             "Гарантия",
             12
@@ -39,12 +40,14 @@
           ]
         },
         "appearance": {
+          "nameCategory": "Внешний вид",
           "color": [
             "Цвет корпуса",
             "Белый"
           ]
         },
         "mobConnection": {
+          "nameCategory": "Мобильное подключение",
           "4G": [
             "4G",
             "есть"
@@ -55,6 +58,7 @@
           ]
         },
         "display": {
+          "nameCategory": "Экран",
           "diagonal": [
             "Диагональ",
             "6.1\""
@@ -73,6 +77,7 @@
           ]
         },
         "system": {
+          "nameCategory": "Система",
           "OS": [
             "Операционная система",
             "IOS 13"
@@ -199,6 +204,45 @@
     {
       "id": 12,
       "category": "computers",
+      "name": "Игровой компьютер ASUS ROG Strix Special (G10DK-A3400G084T)",
+      "price": 69999,
+      "img": "https://static.eldorado.ru/photos/mv/Big/30059528bb.jpg/resize/700x525/",
+      "imgArray": [
+        "https://static.eldorado.ru/photos/mv/Big/30059528bb.jpg",
+        "https://static.eldorado.ru/photos/mv/Big/30059528bb1.jpg",
+        "https://static.eldorado.ru/photos/mv/Big/30059528bb2.jpg",
+        "https://static.eldorado.ru/photos/mv/Big/30059528bb3.jpg",
+        "https://static.eldorado.ru/photos/mv/Big/30059528bb25.jpg"
+      ],
+      "alt": "Игровой компьютер ASUS ROG Strix Special (G10DK-A3400G084T)",
+      "spectifications": {
+        "processor": {
+          "nameCategory": "Процессор",
+          "manufacturer": [
+            "Производитель",
+            "AMD"
+          ],
+          "model": [
+            "Модель процессора",
+            "Ryzen 5 3400G"
+          ],
+          "сlockFrequency": [
+            "Тактовая частота",
+            "3.7 ГГц"
+          ]
+        },
+        "RAM": {
+          "nameCategory": "Оперативная память",
+          "volumeRAM": [
+            "Объём оперативной памяти",
+            "8 GB"
+          ]
+        }
+      }
+    },
+    {
+      "id": 13,
+      "category": "computers",
       "name": "Топ ПК",
       "price": 1000,
       "img": "https://c.dns-shop.ru/thumb/st4/fit/0/0/d16148333d45f81b5eb6c505a11a8e87/ff3435d14d713cc3ed67f2862e3367897c030bc8903b063b1f569824796aa56b.jpg",
@@ -209,21 +253,5 @@
       "specifications": {}
     }
   ],
-  "cart": [
-    {
-      "id": 1,
-      "amount": 1,
-      "timeAdd": 1641925676340
-    },
-    {
-      "id": 2,
-      "amount": 1,
-      "timeAdd": 1641925678057
-    },
-    {
-      "id": 3,
-      "amount": 1,
-      "timeAdd": 1641925679586
-    }
-  ]
+  "cart": []
 }

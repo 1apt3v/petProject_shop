@@ -20,10 +20,8 @@ const Catalog = ({
     const [modalWindowActive, setModalWindowActive] = useState(false)
     const [modalWindowData, setModalWindowData] = useState('')
     const [isLoaded, setIsLoaded] = useState(false)
+    const [fetchingGoods, setFetchingGoods] = useState(false)
 
-    const modalData = modalWindowData.spectifications
-
-    const [fetchingGoods, setFetchingGoods] = useState(true)
     const [category, setCategory] = useState('')
 
     useEffect(() => {
@@ -50,12 +48,11 @@ const Catalog = ({
             setCategory(props.match.params.category)
         }
 
-
+        // console.log(fetchingGoods, goods.length, totalCountGoods);
         if (fetchingGoods === true && (goods.length < totalCountGoods || totalCountGoods === 0)) {
             // без проверки (fetch === true) useEffect срабатывает один лишний раз
             // (goods.length < totalCountElements) нужен, чтобы не делать лишних запросов на сервер
             // и не не обновлять state
-
             shopAPI.getGoods(currentPage, props.match.params.category)
                 .then(({ data, totalCount }) => {
                     setTotalCountGoods(totalCount)
@@ -84,6 +81,15 @@ const Catalog = ({
             setModalImgWindowActive={setModalImgWindowActive}
             cart={cart}
         />)
+
+
+    const modalElements = (data) => {
+        let array = []
+        for (let i in data) {
+            array.push(<SpecModal data={data[i]} name={data[i].nameCategory} key={i} />)
+        }
+        return array
+    }
 
 
 
@@ -144,13 +150,7 @@ const Catalog = ({
                             </div>
                             <div className={styles.spectifications}>
                                 {modalWindowData.spectifications
-                                    ? <>
-                                        <SpecModal data={modalData.general} name={'Главное'} />
-                                        <SpecModal data={modalData.appearance} name={'Внешний вид'} />
-                                        <SpecModal data={modalData.mobConnection} name={'Мобильное подключение'} />
-                                        <SpecModal data={modalData.display} name={'Экран'} />
-                                        <SpecModal data={modalData.system} name={'Система'} />
-                                    </>
+                                    ? modalElements(modalWindowData.spectifications)
                                     : "Данных нет"
                                 }
                             </div>

@@ -11,23 +11,17 @@ import { shopAPI } from '../../../api/api';
 
 
 
+
+
 const Shopping = ({
-    goods,
-    decrementItemInCart,
-    incrementItemInCart,
-    deleteCart,
-    shoppingReducer,
-    setGoods,
-    setCart,
-    addCart,
-    setNewPage,
-    cart,
-    setDefaultValueArrayGoods,
-    setTotalCountGoods,
-    totalCountGoods }) => {
+    goods, decrementItemInCart, incrementItemInCart,
+    deleteCart, shoppingReducer, setGoods, setCart,
+    addCart, setNewPage, cart, setDefaultValueArrayGoods,
+    setTotalCountGoods, totalCountGoods,
+}) => {
+
+
     const [isMenuDisplay, setIsMenuDisplay] = useState(false)
-
-
     const [fetchingCart, setFetchingCart] = useState(true)
     const [totalCountElementsCart, setTotalCountElementCart] = useState(1)
 
@@ -92,7 +86,8 @@ const Shopping = ({
                             cart={cart}
                             setCart={setCart}
                             fetchingCart={fetchingCart}
-                        />}
+                        />
+                        }
                     />
                 </div>
             </div>

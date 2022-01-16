@@ -6,11 +6,12 @@ const SpecModal = ({ data, name }) => {
     const specFunc = (obj) => {
         let array = []
         for (let key in obj) {
-            array.push(obj[key])
+            if (typeof obj[key] === 'object') {
+                array.push(obj[key])
+            } 
+
         }
         return array
-
-
     }
 
     return (

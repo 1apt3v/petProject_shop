@@ -11,7 +11,7 @@ import {
     setCart,
     setNewPage,
     setDefaultValueArrayGoods,
-    setTotalCountGoods
+    setTotalCountGoods,
 } from './redux/shoppingReducer';
 import { NavLink, Route } from 'react-router-dom';
 import Test from './components/Test/Test';

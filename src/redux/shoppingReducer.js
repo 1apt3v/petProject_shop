@@ -19,8 +19,8 @@ const initialState = {
     goods: [],
     // cart: localCart ? localCart : []
     cart: [],
-    currentPage: 1,
-    totalCountGoods: 0
+    currentPage: 0,
+    totalCountGoods: 0,
 }
 
 
@@ -28,7 +28,7 @@ const initialState = {
 const shoppingReducer = (state = initialState, action) => {
     switch (action.type) {
         case ADD_CART: {
-            const item = { ...state.goods[action.payload.id - 1], amount: 1 }
+            const item = { ...state.goods.find(goods => goods.id === action.payload.id), amount: 1, timeAdd: action.payload.timeAdd }
             return {
                 ...state,
                 cart: [...state.cart, item]
