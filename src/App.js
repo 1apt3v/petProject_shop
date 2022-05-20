@@ -47,7 +47,7 @@ const App = (props) => {
                     setGoods={props.setGoods}
                     setNewPage={props.setNewPage}
                     setDefaultValueArrayGoods={props.setDefaultValueArrayGoods}
-                    setNewPage={props.setNewPage}
+                    // setNewPage={props.setNewPage}
                 />
             </Route>
 
